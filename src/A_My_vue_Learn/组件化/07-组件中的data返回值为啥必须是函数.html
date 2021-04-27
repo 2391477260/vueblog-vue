@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<!--三个组件实例没有共享同一个data对象-->
+<div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+</div>
+<template id="cpn">
+    <div>
+        <button v-on:click="inCrement">+</button>
+        <button v-on:click="deCrement">-</button>
+        {{message}}
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component('cpn',{
+        template: '#cpn',
+        data(){
+            return{
+                message:0
+            }
+        },
+        methods:{
+            inCrement () {
+                this.message++
+            },
+            deCrement (){
+                this.message--
+            }
+        }
+    });
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:0
+        }
+    })
+</script>
+</body>
+</html>
+

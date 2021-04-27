@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <!--push(最后添加一个元素),pop(删除最后一个元素),shift(删除第一个元素),
+    unshift(在数组前添加元素)-->
+    <!--sort()元组排序；reverse()逆序输出-->
+    <!--有key效率更高，key的主要作用是为了更高效的更新dom。splice(2,0,'t')插入元素-->
+    <!--删除元素splice(a,b)第一个参数是位置，第二个参数是删除操作的个数-->
+    <h1 v-for="item in message" :key="item">{{item}}</h1>
+    <button @click="btnClick">按钮</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:['a','b','v','f']
+        },
+        methods:{
+            btnClick(){
+                <!--修改元组中的元素，0为索引值-->
+                Vue.set(this.message,0,'A');
+            }
+        }
+    })
+</script>
+</body>
+</html>
+

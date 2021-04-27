@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--父组件模板-->
+<div id="app">
+    <!--监听组件发送过来的事件-->
+    <cpn @itemclick="cpnclick"></cpn>
+</div>
+<!--子组件模板-->
+<template id="cpn">
+    <div>
+    <button v-for="item in categorties" @click="btnclick(item.name)">
+        {{item.name}}
+    </button>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const cpn={
+        template:'#cpn',
+        data(){
+            return{
+                categorties:[
+                    {id:'aaa',name:'热门推荐'},
+                    {id:'ccc',name:'手机数码'},
+                    {id:'ddd',name:'家用电器'},
+                    {id:'www',name:'电脑办公'},
+                ]
+            }
+        },
+        //点击哪个按钮告诉父组件
+        methods:{
+            btnclick(name){
+                //发射这个事件,在组件上监听这个事件
+                this.$emit('itemclick',name)
+            }
+        }
+    };
+    const app=new Vue(
+        {
+            el:'#app',
+            data:{
+                message:'你好啊'
+            },
+            components:{
+                cpn
+            },
+            methods:{
+                cpnclick(name){
+                    console.log(name);
+                }
+            }
+
+        }
+    )
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <cpn></cpn>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    //注册组件的语法糖写法，该组件为全局组件，任何实例vue都能调用
+    //内部调用extend()
+    Vue.component('cpn',{
+        template:
+            `
+                <div>
+                    <h2>标题</h2>
+                     <p>内容</p>
+                </div>
+            `
+    });
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好'
+        }
+    })
+</script>
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <cpn :cmovies="movies" :cmessage="message"></cpn>
+</div>
+<template id="cpn">
+    <div>
+       <ul v-for="item in cmovies">
+           <li>{{item}}</li>
+       </ul>
+        <h2>{{cmessage}}</h2>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const cpn={
+      template: '#cpn' ,
+        //props即可以是数组，还能是对象
+       // props:['cmovies','cmessage'],
+        props:{
+          //cmovies: Array,
+          //cmessage: String
+            cmovies:{
+                type:Array,
+                default(){
+                    return []
+                },
+                required:true
+            },
+            cmessage:{
+                type:String,
+                default:'你好',
+                required:true
+            }
+        },
+      data(){
+        return{
+        }
+      }
+    };
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好',
+            movies:['海贼王','火影忍者','海尔兄弟']
+        },
+        components:{
+            cpn,
+        }
+    })
+</script>
+</body>
+</html>
+

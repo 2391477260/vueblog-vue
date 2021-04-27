@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <!--遍历过程中不获取索引值 v-for还能遍历对象-->
+    <ul>
+        <li v-for="name in names">{{name}}</li>
+    </ul>
+    <!--遍历过程中获取索引值-->
+    <ul>
+       <li v-for="(name,index) in names">{{index+1}}.{{name}}</li>
+    </ul>
+    <!--在遍历对象中，如果只是获取一个值，那么获取的全是value-->
+    <ul>
+        <li v-for="item in info">{{item}}</li>
+    </ul>
+    <!--在遍历对象中，获取key和value-->
+    <ul>
+        <li v-for="(value,key) in info">{{key}}:{{value}}</li>
+    </ul>
+    <!--在遍历对象中，获取key和value和index下标-->
+    <ul>
+        <li v-for="(value,key,index) in info">{{key}}:{{value}}:{{index}}</li>
+    </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            names:['张三','李四','王五','赵六'],
+            info:{
+                name:'why',
+                age:'123',
+                hegit:'183'
+            }
+        }
+    })
+</script>
+</body>
+</html>
+

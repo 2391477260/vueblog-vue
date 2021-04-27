@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <!--v-show只是增加了行内样式display:none;而v-if是完全去掉元素-->
+  <h1 v-if="isShow">{{message}}</h1>
+  <h1 v-show="isShow">{{message}}</h1>
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            isShow:false,
+            message:'hello'
+        }
+    })
+</script>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <cpn2></cpn2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+
+    //1.创建第一个组件
+    const cpn1=Vue.extend({
+        template:
+            `
+                <div>
+                    <h2>标题</h2>
+                    <p>内容111</p>
+                </div>
+            `
+    });
+    //3.创建第二个组件
+    const cpn2=Vue.extend({
+        template:
+            `
+                <div>
+                    <h2>标题</h2>
+                     <p>内容222</p>
+                    <cpn1></cpn1>
+                </div>
+            `,
+        components:{
+            cpn1:cpn1
+        }
+    });
+//最顶层组件 root组件
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:0
+        },
+        components:{
+            cpn2:cpn2,
+        }
+    })
+</script>
+</body>
+</html>
+

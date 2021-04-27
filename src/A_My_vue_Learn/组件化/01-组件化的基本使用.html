@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+
+    //ES6中``也可以定义字符串，而且它能换行
+    /*const str=`asdasd
+    dasd`;*/
+    //1.创建组件构造器对象
+    const cpnConstruct=Vue.extend({
+        template:
+                `
+                <div>
+                    <h2>标题</h2>
+                     <p>内容</p>
+                </div>
+                 `
+    });
+    //2.注册组件
+    Vue.component('cpn',cpnConstruct);//标签名和组件构造器为其参数，必须放在vue实例里才能使用
+    //3.使用组件在上面
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:0
+        }
+    })
+</script>
+</body>
+</html>
+

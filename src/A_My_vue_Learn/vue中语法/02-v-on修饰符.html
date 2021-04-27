@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+ <div @click="divClick">
+     asdasdasd
+     <button @click.stop="ButtonClick">按钮</button>
+ </div>
+    <!--提交表单操作交给另一个函数-->
+    <form action="baidu">
+        <input type="submit" value="提交" @click.prevent="submitClick"></input>
+    </form>
+    <!--监听键盘点击 回车后执行KeyUp函数-->
+    <input  type="text" @keyup.enter="keyUp"></input>
+    <!--按钮只能被点击一次-->
+    <button @click.once="bt2Click">按钮</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:0
+        },
+        methods:{
+            divClick(){
+                console.log("divClick");
+            },
+            ButtonClick(){
+            console.log("ButtonClickClick");
+            },
+            submitClick(){
+                console.log("submitClickClickClick");
+            },
+            keyUp(){
+                console.log('keyUp');
+            },
+            bt2Click(){
+                console.log('bt2Click');
+            }
+        }
+    })
+</script>
+</body>
+</html>
+

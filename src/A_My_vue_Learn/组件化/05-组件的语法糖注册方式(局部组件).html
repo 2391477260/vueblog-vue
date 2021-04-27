@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <cpn></cpn>
+</div>
+<script src="../js/vue.js"></script>
+//局部组件语法糖方式
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好'
+        },
+        components:{
+            'cpn':{
+                    template:
+                    `
+                    <div>
+                        <h2>标题</h2>
+                         <p>内容</p>
+                    </div>
+                    `
+             }
+        }
+    })
+</script>
+</body>
+</html>
+

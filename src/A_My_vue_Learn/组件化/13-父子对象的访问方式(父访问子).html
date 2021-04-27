@@ -1,0 +1,44 @@
+<!--父组件访问子组件，使用$children或者$refs #reference(引用) ref在组件上写个名字，直接拿-->
+<!--子组件访问父组件，使用$parent-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <cpn ref="aaa"></cpn>
+        <button @click="btnClick">按钮</button>
+    </div>
+</body>
+<template id="cpn">
+    <div>
+        <h3>我是子组件</h3>
+        <h2>111</h2>
+    </div>
+</template>
+<script src ="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{},
+        message:'你好',
+        methods:{
+            btnClick() {
+                this.$refs.aaa.showmessage();
+            }
+        },
+        components:{
+            cpn:{
+                template:'#cpn',
+                methods:{
+                   showmessage(){
+                       console.log('shoumessage');
+                   }
+                }
+            }
+        }
+    })
+</script>
+</html>

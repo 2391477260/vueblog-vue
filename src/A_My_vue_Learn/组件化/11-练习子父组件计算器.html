@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <cpn1 @btn1isclick="addclick"></cpn1>
+        <cpn2 @btn2isclick="decclick"></cpn2>
+        <h2>{{total}}</h2>
+    </div>
+    <template id="cpns">
+        <div>
+            <button @click="btn1click">+</button>
+        </div>
+    </template>
+    <template id="cpnd">
+        <div>
+            <button @click="btn2click">-</button>
+        </div>
+    </template>
+<script src="../js/vue.js"></script>
+<script>
+    const cpn1={
+        template:'#cpns',
+        methods:{
+            btn1click(){
+                this.$emit('btn1isclick')
+            }
+        }
+    };
+    const cpn2={
+        template:'#cpnd',
+        methods:{
+            btn2click(){
+                this.$emit('btn2isclick')
+            }
+        }
+    };
+    const app=new Vue({
+        el:'#app',
+        data:{
+            total:0
+        },
+        methods:{
+            addclick(){
+                this.total++;
+            },
+            decclick(){
+                this.total--;
+            }
+        },
+        components:{
+            cpn1,
+            cpn2
+        }
+    })
+</script>
+</body>
+</html>
