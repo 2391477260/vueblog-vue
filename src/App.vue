@@ -13,14 +13,17 @@
   }
 </script>
 <style>
- #app{
-   max-width: 960px;
-   margin: 0 auto;
- }
-  .Button{
-  margin-left: 50%;
-    right: 70px;
-
+   body,
+   html,
+   #app {
+    font-family: Avenir,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    height: 100%;
+    width: 100%;
   }
+
 
 </style>
