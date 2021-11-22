@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import store from './store/index'
 import Element from 'element-ui'
 import axios from 'axios'
 import mavonEditor from 'mavon-editor'
@@ -11,12 +11,9 @@ import 'mavon-editor/dist/css/index.css'
 
 import "./axios.js"
 import "./permission"
-import live2d from 'ttzxh-vue-live2d'
 
-Vue.use(live2d)
 Vue.use(Element)
 Vue.use(mavonEditor)
-
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 

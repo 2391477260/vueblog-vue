@@ -2,7 +2,7 @@
     <div id="item-root">
         <div class="wrap-scan">
             <div class="title-root">
-                <a class="title-span" :href="['/artDetails/'+bean.artId]" target="_blank">
+                <a class="title-span" :href="['/blogDetail/'+bean.artId]" target="_blank">
                            {{bean.title}}
                          </a>
                 <span class="art-type">{{bean.typeName}}</span>
@@ -27,6 +27,7 @@ export default {
 
         }
     },
+
 }
 </script>
 <style lang="scss">

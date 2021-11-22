@@ -1,6 +1,6 @@
 <template>
-    <div class="MyIndex" @click="createLoves($event)">
-       <back-ground ref="myback"></back-ground>
+    <div class="MyIndex" >
+        <BackGround ref="MyBack"></BackGround>
         <div class="musicPlayer">
             <iframe allow="autoplay" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330
                      height=86
@@ -37,10 +37,9 @@
 
 <script>
     import BackGround from '../components/background'
-    import Aplayer from 'vue-aplayer'
     export default {
         name: "Index.vue",
-        components: {BackGround,Aplayer},
+        components: {BackGround},
         data() {
             return {
                 dataList:["https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F16%2F3d%2F0b%2F163d0b503edae8946d9ad58aa4108cef.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637308119&t=b75bc7dfb491fbb4143581ce03b0eb17",
@@ -61,32 +60,45 @@
         },
         created() {
             this.runInv;
+            this.RemoveScroll();
         },
         methods:{
+            //生成气泡
             createLoves(e){
-                this.$refs.myback.createLoves(e);
+                this.$refs.MyBack.createLoves(e);
             },
+            //前往github
             RedirectToGithub(){
                 window.open("https://github.com/2391477260");
             },
+            //前往博客页面
             RedirectToBlog(){
                 this.$router.push('/blogs');
             },
+            //去指定的轮播图
             gotoPage(index) {
                 this.currentIndex = index;
             },
+            //后一首歌曲
             addmusicListNum(){
                 if(this.musicListNum<this.musicList.length-1){
                     this.musicListNum++;
                 }
                 console.log(this.musicListNum);
             },
+            //前一首歌曲
             submusicListNum(){
                 if(this.musicListNum>=1){
                     this.musicListNum--;
                 }
                 console.log(this.musicListNum);
             },
+            //禁用滑动条
+            RemoveScroll () {
+
+                document.body.style.overflow = "hidden";
+
+            }
         },
         computed: {
             //上一张

@@ -1,7 +1,7 @@
 <template>
   <div class="topbar ">
     <div class="topbar-box">
-      <img class="topbar-image" src="../assets/img/logo.png" @click="" alt="">
+      <img class="topbar-image" src="../../assets/img/logo.png" @click="" alt="">
       <ul class="topbar-list">
         <li  class="topbar-list-item" @click="toIndex(path)" @mouseenter="changeActive($event)" @mouseleave="removeActive($event)"
           v-for="({ title, path, fn },index) in itemModel" :key="index" >{{title}}
@@ -13,21 +13,37 @@
                 onblur="this.placeholder='搜索'">
         </input>
         <div class="topbar-search-image-box">
-          <img class="topbar-search-image" src="../assets/img/search.png" alt="">
+          <img class="topbar-search-image" src="../../assets/img/search.png" alt="">
         </div>
       </div>
-      <TopBarProfile class="flex flex-items-center" />
+        <div class="draw-paper-button-box-a">
+          <a class="draw-paper-button-box-edit" @click="$router.push('/edit')">
+            <img class="draw-image" src="../../assets/img/icon/edit_white.png" alt="">
+            <span class="draw-image-edit">写博客</span>
+          </a>
+        </div>
+      <div class="draw-paper-button-box-b" v-show="loginButtonIsShow" >
+        <a class="draw-paper-button-box-login" @click="showDialog" >
+          <span class="draw-image-login" >登录</span>
+        </a>
+      </div>
+<!--      <div class="draw-paper-button-box-c" v-show="!loginButtonIsShow" @click="showDialog">
+       <h2>头像</h2>
+      </div>-->
     </div>
   </div>
 </template>
 
 <script>
-import TopBarProfile from "./TopBarProfile";
-import BaseInput from "./Base/BaseInput";
 export default {
   name: "TopBar",
-  components: {TopBarProfile,BaseInput},
-  data: function () {
+  props:{
+    loginButtonIsShow:{
+      type:Boolean,
+      default:true,
+    }
+  },
+  data () {
     return {
       searchFocus: false,
       itemModel: [
@@ -35,10 +51,11 @@ export default {
         { title: '文章', path: '/blogs', fn: 'toCatalogue' },
         { title: '关于', path: '/about', fn: 'toAbout' }
       ],
-      login: localStorage.uid
     }
   },
-
+  created() {
+    this.isLogin();
+  },
   methods: {
     changeActive(e){
       e.currentTarget.className = 'topbar-list-item-change';
@@ -54,6 +71,17 @@ export default {
     toIndex(path) {
       this.$router.replace(path)
     },
+    //点击登录按钮后显示登录框，向父组件发送请求
+    showDialog(){
+      console.log("已点击");
+      this.$emit('showDialog',"打开登录框")
+    },
+    //判断是否登录
+    isLogin(){
+      if(localStorage.getItem('token')==='123456'){
+        this.loginButtonIsShow=false;
+      }
+    }
   }
 }
 </script>
@@ -71,7 +99,7 @@ ul, li {
 }
 .topbar-box {
   height: 100%;
-  width: 1200px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -117,8 +145,7 @@ ul, li {
   align-items: center;
 }
 .topbar-search{
-  transition: all .2s linear;
-  align-items: center;
+  margin-left: 100px;
   display: flex;
   width: 400px;
 }
@@ -143,7 +170,7 @@ ul, li {
   height: 25px;
   width: 50px;
   color: #fff;
-  background-color: #4a3bff;
+  background: linear-gradient(90deg,#56ccf2,#2f80ed);;
 }
 .topbar-search-image{
   height: 20px;
@@ -158,6 +185,50 @@ ul, li {
   -khtml-user-select: none;
   user-select: none;
 
+}
+.draw-paper-button-box-edit{
+  text-decoration-line: none;
+  padding: 5px 6px;
+  color: #fff;
+  font-size: 13px;
+  background: linear-gradient(90deg,#56ccf2,#2f80ed);
+  border-radius: 15px;
+  min-width: 90px;
+}
+.draw-paper-button-box-login{
+  text-decoration-line: none;
+  padding: 5px 5px;
+  color: #fff;
+  font-size: 13px;
+  background: linear-gradient(90deg,#56ccf2,#2f80ed);
+  border-radius: 15px;
+  min-width: 90px;
+}
+.draw-paper-button-box-a{
+  height: 16px;
+  margin-bottom: 12px;
+}
+.draw-paper-button-box-b{
+  height: 16px;
+  margin-bottom: 12px;
+}
+.draw-image{
+  height: 16px;
+  border-style: none;
+  padding: 0;
+  vertical-align: middle;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.draw-image-edit{
+  margin-left: 10px;
+  font-size: 12px;
+}
+.draw-image-login{
+  font-size: 12px;
 }
 button, input {
   overflow: visible;

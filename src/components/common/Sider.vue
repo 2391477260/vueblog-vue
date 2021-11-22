@@ -54,7 +54,7 @@
 
 <style scoped>
     .sider-panel{
-        margin-top: 10%;
+        margin-top: 5%;
         float: left;
         width: 25%;
         height: 100%;

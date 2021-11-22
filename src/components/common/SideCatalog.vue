@@ -3,7 +3,7 @@
         <div class="art-tag-span" v-for="(item) in tagList" @click.stop="">
             <div >
                 <span>{{item.tag}}</span>
-                <span>({{item.tagnum}})</span>
+                <span>({{item.tagNum}})</span>
             </div>
         </div>
     </div>
@@ -16,37 +16,37 @@ export default {
         tagList: [
             {
                 tag: 'Docker',
-                tagnum:10,
+                tagNum:10,
                 index:'0'
             },
             {
                 tag: 'JAVA',
-                tagnum:10,
+                tagNum:10,
                 index:'1'
             },
             {
                 tag: '设计模式',
-                tagnum:10,
+                tagNum:10,
                 index:'2'
             },
             {
                 tag: 'Python',
-                tagnum:10,
+                tagNum:10,
                 index:'3'
             },
             {
                 tag: 'C++',
-                tagnum:10,
+                tagNum:10,
                 index:'4'
             },
             {
                 tag: 'SpringBoot',
-                tagnum:10,
+                tagNum:10,
                 index:'5'
             },
             {
                 tag: 'MyBatis',
-                tagnum:10,
+                tagNum:10,
                 index:'6'
             }
         ],
@@ -56,10 +56,9 @@ export default {
 }
 </script>
 <style lang="scss" >
-    @import '../vueblog-vue/src/assets/common/base';
+    @import 'src/assets/common/base';
     .side-catalog {
         width: 20%;
-        height: 100%;
         position: fixed;
         z-index: 10;
         right: 10%;

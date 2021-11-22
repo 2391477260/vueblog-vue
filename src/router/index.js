@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Index from "../views/Index";
 import Blogs from '../views/Blogs.vue'
 import BlogDetail from '../views/BlogDetail.vue'
+import EditBlog from "../views/EditBlog";
 
 Vue.use(VueRouter)
 
@@ -18,18 +19,19 @@ const routes = [
     component: Index,
   },
   {
+    path: '/edit',
+    name: 'EditBlog',
+    component: EditBlog,
+  },
+  {
     path: '/blogs',
     name: 'Blogs',
     component: Blogs,
   },
-
   {
-    path: '/blog/:blogId',
+    path: '/blogDetail/:blogId',
     name: 'BlogDetail',
     component: BlogDetail,
-    meta: {
-      requireAuth: true
-    }
   },
 ];
 
