@@ -15,39 +15,19 @@ export default {
     return {
         tagList: [
             {
-                tag: 'Docker',
+                tag: '生活',
                 tagNum:10,
                 index:'0'
             },
             {
-                tag: 'JAVA',
+                tag: '娱乐',
                 tagNum:10,
                 index:'1'
             },
             {
-                tag: '设计模式',
+                tag: '学习',
                 tagNum:10,
                 index:'2'
-            },
-            {
-                tag: 'Python',
-                tagNum:10,
-                index:'3'
-            },
-            {
-                tag: 'C++',
-                tagNum:10,
-                index:'4'
-            },
-            {
-                tag: 'SpringBoot',
-                tagNum:10,
-                index:'5'
-            },
-            {
-                tag: 'MyBatis',
-                tagNum:10,
-                index:'6'
             }
         ],
         indexMark: 0,
@@ -58,12 +38,12 @@ export default {
 <style lang="scss" >
     @import 'src/assets/common/base';
     .side-catalog {
+        margin-top: 10%;
+        margin-left: 5%;
         width: 20%;
+        height: 10%;
         position: fixed;
         z-index: 10;
-        right: 10%;
-        top: 20%;
-
         .art-tag-span {
             float: left;
             text-align: left;

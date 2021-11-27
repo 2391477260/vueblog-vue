@@ -9,12 +9,20 @@
             </div>
             <el-dialog
                     :visible.sync="dialogFormVisible"
-                    title="请填写博客摘要和类型"
+                    title="请填写博客信息"
                     width="30%"
                     :append-to-body="true"
             >
                 <el-input
-                        v-model="textarea"
+                        v-model="article.title"
+                        :rows="1"
+                        type="textarea"
+                        placeholder="输入博客标题"
+                />
+                <br>
+                <br>
+                <el-input
+                        v-model="article.abstract"
                         :rows="2"
                         type="textarea"
                         placeholder="输入博客摘要"
@@ -29,32 +37,60 @@
                 </div>
                 <template #footer>
                   <span class="dialog-footer">
-                    <el-button @click="dialogFormVisible = false">返回</el-button>
-                    <el-button type="primary" @click="dialogFormVisible = false"
-                    >提交</el-button
-                    >
+                      <el-button type="primary" @click="HandleBlog">提交
+                      </el-button>
+                      <el-button @click="dialogFormVisible = false">返回</el-button>
                   </span>
                 </template>
             </el-dialog>
         </div>
 </template>
 <script>
+    import showdown from "showdown";
+    import utils from "../api/Utils/util"
     import Editor from '../components/editor'
+
     export default {
         name: "EditBlog",
         components: {Editor},
         data(){
             return{
-                textarea:'',
+                article:{
+                    title:'',
+                    typeName:'',
+                    abstract:'',
+                    textArea:'',
+                    textAreaHtml:'',
+                    postTime:'',
+                    artCommentCount:''
+                },
                 dialogFormVisible:false,
                 radio:'',
-
             }
         },
         methods:{
             HandleEditBlog(){
                 console.log("提交博客，弹出摘要书写框");
+                this.article.textArea=this.$refs.editor.editBlogContent;
+                console.log(this.article.textArea);
                 this.dialogFormVisible=true;
+            },
+            HandleBlog(){
+                this.article.postTime=utils.getCurrentTime();
+                if(this.radio===3){
+                    this.article.typeName='学习';
+                }else if(this.radio===6){
+                    this.article.typeName='娱乐';
+                }else if(this.radio===9){
+                    this.article.typeName='生活';
+                }
+                let converter = new showdown.Converter();
+                this.article.textAreaHtml=converter.makeHtml(this.article.textArea);
+                console.log("提交的博客为：");
+                console.log(this.article);
+                this.dialogFormVisible=false;
+                /*  document.getElementById('id').innerHTML = converter.makeHtml(this.article.textArea);
+                console.log(this.article);*/
             }
         }
     }

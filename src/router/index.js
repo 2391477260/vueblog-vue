@@ -4,7 +4,7 @@ import Index from "../views/Index";
 import Blogs from '../views/Blogs.vue'
 import BlogDetail from '../views/BlogDetail.vue'
 import EditBlog from "../views/EditBlog";
-
+import About from "../views/About";
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,9 +29,14 @@ const routes = [
     component: Blogs,
   },
   {
-    path: '/blogDetail/:blogId',
+    path: '/blogDetail/:artId',
     name: 'BlogDetail',
     component: BlogDetail,
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
   },
 ];
 
@@ -39,6 +44,6 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
 
 export default router

@@ -1,71 +1,32 @@
 <template>
-    <div class="comment-root">
-        <div style="padding: 10px;">
-            <span >{{comments}}</span>
-            <div v-for='item in commentData' class="comment-info-root">
-                <div class="comment-user-info">
-                    <div>
-                        <img src=../assets/img/user_boy.png class="comment-image">
-                        <span  :class="!item.visitorUrl?'anonymous-visitor':'visitor2'" >{{item.commentNick}}</span>
-                        <span class="comment-browser-version">{{item.commentUserVer}}</span>
-                    </div>
-                </div>
-                <div class="comment-detail">
-                    <span >{{item.commentDetails}}</span>
-                </div>
-                <div class="comment-date">
-                    <span >
-                            {{item.commentDate}}
-                    </span>
-                </div>
+    <div class="comments">
+        <div class="comment-send">
+            <div class="textarea-container">
+                <textarea cols="80" name="msg" rows="5" placeholder="发一条友善的评论" class="ipt-txt"></textarea>
+                <button type="submit" class="comment-submit">发表评论</button>
             </div>
         </div>
-        <div class="Pagination" style="text-align: left;margin-top: 10px;">
-            <el-pagination background @size-change="" @current-change="" :current-page="currentPage" :page-size="10" layout="total, prev, pager, next" :total="count">
-            </el-pagination>
-        </div>
-        <div class="Visitor">
-            <input style="width: 100px" placeholder="昵称" v-model="nickname">
-            </input>&nbsp
-            <input placeholder="邮箱" v-model="email">
-            </input>&nbsp
-            <input placeholder="网址(http://) 非必填" v-model="visitorUrl">
-            </input>
-        </div>
-        <div class="Repaly">
-            <el-input class="Repalytext" type="textarea" :autosize="{ minRows: minRows, maxRows: maxRows}" placeholder="请输入内容.." v-model="details" style="width: 100%;" maxlength="200" show-word-limit>
-            </el-input>
-            <el-button  style="margin-top: 10px;float: right" type="primary" size="small"  @click="addComment">发布评论</el-button>
+        <div class="comment-list">
+            <div class="item-comment" v-for="item in commentsDate">
+                <div class="user-face">
+                        <img class="user-face-img" src="../assets/img/user_boy.png" alt="">
+                </div>
+            </div>
         </div>
     </div>
 </template>
 <script>
 
 export default {
-    props: {
-        isShowComment: false,
-        artId: { type: String },
-    },
+
     data() {
         return {
-            minRows: 5,
-            maxRows: 8,
-            commentData: [],
-            page: 1,
-            row: 10,
-            count: 0,
-            currentPage: 1,
-            details: '',
-            nickname: '',
-            email: '',
-            visitorUrl: '',
+            commentsDate:[],
         }
     },
-
     computed: {
 
     },
-
     mounted() {
     },
     methods:{
@@ -78,38 +39,53 @@ export default {
 </script>
 <style lang="scss">
 @import "../assets/common/base.scss";
-.comment-root{
-    padding: 0 30px 50px 30px;
-    display: block;
+.comments{
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+    font-size: 0;
+    zoom: 1;
+    min-height: 100px;
+    background: #fff;
 }
-.comment-info-root{
-    border-bottom: 1px solid #f0f0f0;
-    padding: 10px 0;
-    display: block;
+.comment-send{
+    margin: 10px 0;
 }
-.comment-user{
-
-}
-.comment-detail{
-
-}
-.comment-date{
-
-}
-.Visitor{
-    margin-top: 10px;
-    float: left;
-}
-.Repaly{
-    margin-top: 50px;
-    margin-bottom: 100px;
-    text-align: left;
-}
-.Repalytext{
-    position: relative;
-    display: inline-block;
+.textarea-container{
     width: 100%;
-    vertical-align: bottom;
-    font-size: 14px;
+    height: 65px;
 }
+.ipt-txt{
+        font-size: 12px;
+        display: inline-block;
+        box-sizing: border-box;
+        background-color: #f4f5f7;
+        border: 1px solid #e5e9ef;
+        overflow: auto;
+        border-radius: 4px;
+        color: #555;
+        width: 100%;
+        height: 65px;
+        transition: 0s;
+        padding: 5px 10px;
+        line-height: normal;
+        outline: none;
+        resize:none
+ }
+ .comment-submit{
+        width: 70px;
+        height: 64px;
+        position: absolute;
+        padding: 4px 15px;
+        font-size: 14px;
+        color: #fff;
+        border-radius: 4px;
+        text-align: center;
+        min-width: 60px;
+        vertical-align: top;
+        cursor: pointer;
+        background-color: #00a1d6;
+        border: 1px solid #00a1d6;
+        transition: 0.1s;
+        user-select: none;
+        outline: none;
+ }
 </style>

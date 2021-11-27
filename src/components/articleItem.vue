@@ -9,7 +9,7 @@
             </div>
             <div>
                 <div class="content-root">
-                    <span class="content-span">{{bean.content}}</span>
+                    <span class="content-span">{{bean.abstract}}</span>
                 </div>
                 <div class="scan-root">
                     <span ><img src="../assets/img/awesome.png" alt="">{{bean.artCommentCount}}</span>
